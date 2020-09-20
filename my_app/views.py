@@ -8,13 +8,25 @@ name="HelperView"
 facts = {"Birthday":"September 18th, 2020", "Favorite Color": "blue", "Favorite Hackathon": "HackMIT"}
 posts = []
 
+@app.route("/clogin")
+def clogin():
+    return render_template("candidatelogin.html")
+
+@app.route("/cologin")
+def cologin():
+    return render_template("companylogin.html")
+
+@app.route("/orgilogin")
+def orgilogin():
+    return render_template("orgilogin.html")
+
 @app.route("/failpage")
 def failpage():
     return render_template("failpage.html")
 
-@app.route("/homepage")
-def homepage():
-    return render_template("homepage.html")
+@app.route("/successpage")
+def successpage():
+    return render_template("successpage.html")
 
 @app.route("/")
 def index():
@@ -90,6 +102,11 @@ def change_facts():
     return redirect("/")
 """
 
+@app.route("/click", methods=["POST"])
+def click():
+    return "okay"
+
+ 
 @app.route("/login", methods=["POST"])
 def login():
     if request.method == "POST":
