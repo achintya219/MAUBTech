@@ -12,9 +12,12 @@ $(document).ready(function() {
             data: JSON.stringify(loginInfo),
             processData: false,
             contentType: "application/json; charset=UTF-8",
-            complete: function() {
+            success: function(result) {
                 console.log("request complete!");
-                window.location = "/homepage";
+                if (result=="okay")
+                    window.location = "/homepage";
+                else
+                    window.location = "/failpage";
             }
         });
 

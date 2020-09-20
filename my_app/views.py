@@ -8,6 +8,10 @@ name="HelperView"
 facts = {"Birthday":"September 18th, 2020", "Favorite Color": "blue", "Favorite Hackathon": "HackMIT"}
 posts = []
 
+@app.route("/failpage")
+def failpage():
+    return render_template("failpage.html")
+
 @app.route("/homepage")
 def homepage():
     return render_template("homepage.html")
@@ -94,12 +98,11 @@ def login():
         new_login = Login(email=login_info['email'], password=login_info['password'])
         
         x = 0
-        for email,password in db_logins:
-            if new_login.email == email and new_login.password == password:
+        for loginval in db_logins:
+            if new_login.email == loginval.email and new_login.password == loginval.password:
                 x = 1
         if x == 1:
-            
-        return "okay"
-        """else:
-            return redirect("/")
-"""
+            return "okay"
+        else:
+            return "notokay"
+
