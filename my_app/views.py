@@ -8,15 +8,18 @@ name="HelperView"
 facts = {"Birthday":"September 18th, 2020", "Favorite Color": "blue", "Favorite Hackathon": "HackMIT"}
 posts = []
 
-@app.route("/clogin")
+@app.route("/signuppage")
+def signup():
+    return render_template("signup.html")
+@app.route("/candidatelogin")
 def clogin():
     return render_template("candidatelogin.html")
 
-@app.route("/cologin")
+@app.route("/companylogin")
 def cologin():
     return render_template("companylogin.html")
 
-@app.route("/orgilogin")
+@app.route("/organizerlogin")
 def orgilogin():
     return render_template("orgilogin.html")
 
