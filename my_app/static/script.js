@@ -1,10 +1,6 @@
 $(document).ready(function() {
-    $("#orgilogin-button").click(function() {
+    $("#clogin-button").click(function() {
         const url = "http://localhost:5000/click";
-        `const loginInfo = {
-            email: $("#login-email").val(),
-            password: $("#login-pass").val()
-        };`
 
         $.ajax({
             url: url,
@@ -15,7 +11,7 @@ $(document).ready(function() {
             success: function(result) {
                 console.log("request complete!");
                 if (result=="okay")
-                    window.location = "/orgilogin";
+                    window.location = "/clogin";
                 else
                     window.location = "/failpage";
             }
@@ -25,10 +21,6 @@ $(document).ready(function() {
 
     $("#cologin-button").click(function() {
         const url = "http://localhost:5000/click";
-        `const loginInfo = {
-            email: $("#login-email").val(),
-            password: $("#login-pass").val()
-        };`
 
         $.ajax({
             url: url,
@@ -49,10 +41,6 @@ $(document).ready(function() {
 
     $("#orgilogin-button").click(function() {
         const url = "http://localhost:5000/click";
-        `const loginInfo = {
-            email: $("#login-email").val(),
-            password: $("#login-pass").val()
-        };`
 
         $.ajax({
             url: url,
