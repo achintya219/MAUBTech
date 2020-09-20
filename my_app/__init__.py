@@ -18,7 +18,11 @@ db.session.add(candidate)
 db.session.commit()
 
 db.create_all()
+<<<<<<< HEAD
 company = companyLogin(email="company@helperview.com", password="company", noi=3, tpi=45, name="Random", ctc=75000)
+=======
+company = companyLogin(email="company@helperview.com", password="company", noi=3, tpi=45, name="Random", ctc = 7500)
+>>>>>>> e67887c7a57e6e1b1284ac42da27cb9c3f89c259
 db.session.add(company)
 db.session.commit()
 
