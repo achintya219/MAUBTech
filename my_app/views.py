@@ -4,20 +4,24 @@ from my_app import app, db
 from flask import render_template, request, redirect
 from my_app.models import candidateLogin, companyLogin, organizerLogin, Login
 
-name="HelperView"
-facts = {"Birthday":"September 18th, 2020", "Favorite Color": "blue", "Favorite Hackathon": "HackMIT"}
-posts = []
+name="success"
+new_login = Login(email="", password="")
 
 @app.route("/signuppage")
 def signup():
     return render_template("signup.html")
+
 @app.route("/candidatepage")
 def candidatepage():
     return render_template("candidatelogin.html")
 
 @app.route("/companypage")
 def companypage():
-    return render_template("companylogin.html")
+    global new_login
+    db_company = companyLogin.query.all()
+    for details in db_company:
+        if details.email == new_login.email and details.password == new_login.password:
+            return render_template("companylogin.html", namec=details.name, noi=details.noi, tpi=details.tpi, ctc = details.ctc)
 
 @app.route("/organizerpage")
 def organizerpage():
@@ -25,7 +29,9 @@ def organizerpage():
 
 @app.route("/failpage")
 def failpage():
-    return render_template("failpage.html")
+    global name
+    name = "failed"
+    return render_template("mainpage.html", name=name)
 
 @app.route("/successpage")
 def successpage():
@@ -33,13 +39,12 @@ def successpage():
 
 @app.route("/")
 def index():
-    return render_template("mainpage.html")
+    return render_template("mainpage.html", name=name)
 
 @app.route("/click", methods=["POST"])
 def click():
     return "okay"
 
- 
 @app.route("/login", methods=["POST"])
 def login():
     if request.method == "POST":
@@ -47,6 +52,7 @@ def login():
         db_logins_company = companyLogin.query.all()
         db_logins_organizer = organizerLogin.query.all()
         login_info = request.get_json()
+        global new_login
         new_login = Login(email=login_info['email'], password=login_info['password'])
         
         x = 0
@@ -67,4 +73,3 @@ def login():
             return "organizer"
         else:
             return "notokay"
-
