@@ -21,7 +21,7 @@ def companypage():
     db_company = companyLogin.query.all()
     for details in db_company:
         if details.email == new_login.email and details.password == new_login.password:
-            return render_template("companylogin.html", namec=details.name, noi=details.noi, tpi=details.tpi)
+            return render_template("companylogin.html", namec=details.name, noi=details.noi, tpi=details.tpi, ctc=details.ctc)
 
 @app.route("/organizerpage")
 def organizerpage():
