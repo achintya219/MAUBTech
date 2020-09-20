@@ -5,7 +5,6 @@
 }
 
 #main-header {
-    margin-top: 0.5em;
     font-size: 5em;
     font-family: sans-serif;
     font-style: italic;
@@ -18,4 +17,9 @@
 
 .details {
     text-align: center;
+}
+
+#fail-message {
+    color: red;
+    font-style: italic;
 }

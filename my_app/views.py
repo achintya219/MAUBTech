@@ -4,13 +4,12 @@ from my_app import app, db
 from flask import render_template, request, redirect
 from my_app.models import candidateLogin, companyLogin, organizerLogin, Login
 
-name="HelperView"
-facts = {"Birthday":"September 18th, 2020", "Favorite Color": "blue", "Favorite Hackathon": "HackMIT"}
-posts = []
+name="success"
 
 @app.route("/signuppage")
 def signup():
     return render_template("signup.html")
+
 @app.route("/candidatepage")
 def candidatepage():
     return render_template("candidatelogin.html")
@@ -25,7 +24,8 @@ def organizerpage():
 
 @app.route("/failpage")
 def failpage():
-    return render_template("failpage.html")
+    name = "failed"
+    return render_template("mainpage.html", name=name)
 
 @app.route("/successpage")
 def successpage():
@@ -33,7 +33,7 @@ def successpage():
 
 @app.route("/")
 def index():
-    return render_template("mainpage.html")
+    return render_template("mainpage.html", name=name)
 
 @app.route("/click", methods=["POST"])
 def click():
@@ -67,4 +67,3 @@ def login():
             return "organizer"
         else:
             return "notokay"
-
