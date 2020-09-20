@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    `
     $("#clogin-button").click(function() {
         const url = "http://localhost:5000/click";
 
@@ -57,7 +58,7 @@ $(document).ready(function() {
             }
         });
 
-    });
+    });`
 
     $("#login-button").click(function() {
         const url = "http://localhost:5000/login";
@@ -74,8 +75,12 @@ $(document).ready(function() {
             contentType: "application/json; charset=UTF-8",
             success: function(result) {
                 console.log("request complete!");
-                if (result=="okay")
-                    window.location = "/successpage";
+                if (result=="candidate")
+                    window.location = "/candidatepage";
+                else if (result=="company")
+                    window.location = "/companypage";
+                else if (result=="organizer")
+                    window.location = "/organizerpage";
                 else
                     window.location = "/failpage";
             }

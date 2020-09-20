@@ -10,9 +10,19 @@ db = SQLAlchemy(app)
 
 
 import my_app.views
-from my_app.models import Login
+from my_app.models import Login, candidateLogin, companyLogin, organizerLogin
 
 db.create_all()
-l = Login(email="admin@helperview.com", password="12345678")
-db.session.add(l)
+candidate = candidateLogin(email="candidate@helperview.com", password="candidate")
+db.session.add(candidate)
+db.session.commit()
+
+db.create_all()
+company = companyLogin(email="company@helperview.com", password="company")
+db.session.add(company)
+db.session.commit()
+
+db.create_all()
+organizer = organizerLogin(email="organizer@helperview.com", password="organizer")
+db.session.add(organizer)
 db.session.commit()
